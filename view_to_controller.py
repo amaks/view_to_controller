@@ -8,13 +8,14 @@ class ViewToControllerCommand(sublime_plugin.TextCommand):
     global _actionGlobal
     global _controllerGlobal
 
-    file_name   = self.view.file_name()
-    source_path = os.path.dirname(file_name)
-    _controllerGlobal  = source_path.replace('views', 'controllers') + '_controller.rb'
+    file_name         = self.view.file_name()
+    source_path       = os.path.dirname(file_name)
+    _controllerGlobal = source_path.replace('views', 'controllers') + '_controller.rb'
 
     self.detect_action_name(file_name, source_path)
 
-    sublime.active_window().open_file(_controllerGlobal)
+    if os.path.isfile(_controllerGlobal):
+      sublime.active_window().open_file(_controllerGlobal)
 
   def detect_action_name(self, file_name, source_path):
     global _actionGlobal
