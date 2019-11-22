@@ -1,5 +1,7 @@
 import sublime, sublime_plugin, os
 
+# command + shift + 7
+
 _actionGlobal     = None
 _controllerGlobal = None
 
